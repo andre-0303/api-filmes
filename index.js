@@ -4,7 +4,7 @@ import connectDB from "./db.js";
 import Filme from "./models/Filme.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Conectar ao MongoDB
 connectDB();
