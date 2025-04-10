@@ -28,6 +28,20 @@ app.get("/filmes", async (req, res) => {
   }
 });
 
+// Buscar filme por ID
+app.get("/filmes/:id", async (req, res) => {
+  try {
+    const filme = await Filme.findById(req.params.id);
+    if (!filme) {
+      return res.status(404).json({ erro: "Filme não encontrado" });
+    }
+    res.json(filme);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao buscar filme" });
+  }
+});
+
+
 // Adicionar um novo filme
 app.post("/filmes", async (req, res) => {
   try {
